@@ -138,6 +138,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\PriceList.xlsx" />
     <None Include="Resources\ресторан1.jpg" />
   </ItemGroup>
   <ItemGroup>
