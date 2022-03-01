@@ -38,7 +38,7 @@ namespace Ресторан
 
         private void buttonPriceList_Click(object sender, EventArgs e)
         {
-            //lkjhgfdsdfghjkl
+            
         }
     }
 }
