@@ -44,9 +44,10 @@ namespace Ресторан
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::Ресторан.Properties.Resources.эмблема1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(147, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(131, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(148, 124);
+            this.pictureBox1.Size = new System.Drawing.Size(132, 99);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -56,9 +57,10 @@ namespace Ресторан
             this.buttonMakeOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonMakeOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMakeOrder.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonMakeOrder.Location = new System.Drawing.Point(143, 206);
+            this.buttonMakeOrder.Location = new System.Drawing.Point(127, 165);
+            this.buttonMakeOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonMakeOrder.Name = "buttonMakeOrder";
-            this.buttonMakeOrder.Size = new System.Drawing.Size(159, 66);
+            this.buttonMakeOrder.Size = new System.Drawing.Size(141, 53);
             this.buttonMakeOrder.TabIndex = 2;
             this.buttonMakeOrder.Text = "Сделать заказ";
             this.buttonMakeOrder.UseVisualStyleBackColor = true;
@@ -70,9 +72,10 @@ namespace Ресторан
             this.buttonManageMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonManageMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonManageMenu.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonManageMenu.Location = new System.Drawing.Point(144, 278);
+            this.buttonManageMenu.Location = new System.Drawing.Point(128, 222);
+            this.buttonManageMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonManageMenu.Name = "buttonManageMenu";
-            this.buttonManageMenu.Size = new System.Drawing.Size(159, 66);
+            this.buttonManageMenu.Size = new System.Drawing.Size(141, 53);
             this.buttonManageMenu.TabIndex = 3;
             this.buttonManageMenu.Text = "Управлять меню";
             this.buttonManageMenu.UseVisualStyleBackColor = true;
@@ -84,12 +87,14 @@ namespace Ресторан
             this.buttonPriceList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonPriceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonPriceList.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonPriceList.Location = new System.Drawing.Point(144, 351);
+            this.buttonPriceList.Location = new System.Drawing.Point(128, 281);
+            this.buttonPriceList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPriceList.Name = "buttonPriceList";
-            this.buttonPriceList.Size = new System.Drawing.Size(159, 66);
+            this.buttonPriceList.Size = new System.Drawing.Size(141, 53);
             this.buttonPriceList.TabIndex = 4;
             this.buttonPriceList.Text = "Прайс-лист";
             this.buttonPriceList.UseVisualStyleBackColor = true;
+            this.buttonPriceList.Click += new System.EventHandler(this.buttonPriceList_Click);
             // 
             // buttonExit
             // 
@@ -97,9 +102,10 @@ namespace Ресторан
             this.buttonExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonExit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonExit.Location = new System.Drawing.Point(79, 490);
+            this.buttonExit.Location = new System.Drawing.Point(70, 392);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(277, 56);
+            this.buttonExit.Size = new System.Drawing.Size(246, 45);
             this.buttonExit.TabIndex = 5;
             this.buttonExit.Text = "Завершение работы";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -111,19 +117,19 @@ namespace Ресторан
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(156, 139);
+            this.label1.Location = new System.Drawing.Point(139, 111);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 26);
+            this.label1.Size = new System.Drawing.Size(117, 24);
             this.label1.TabIndex = 6;
             this.label1.Text = "TRATTORIA";
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Ресторан.Properties.Resources.ресторан1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(436, 558);
+            this.ClientSize = new System.Drawing.Size(388, 446);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonExit);
@@ -132,6 +138,7 @@ namespace Ресторан
             this.Controls.Add(this.buttonMakeOrder);
             this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главная страница";

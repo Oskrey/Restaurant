@@ -35,5 +35,10 @@ namespace Ресторан
             this.Hide();
             form_autorization.ShowDialog();
         }
+
+        private void buttonPriceList_Click(object sender, EventArgs e)
+        {
+            //lkjhgfdsdfghjkl
+        }
     }
 }
