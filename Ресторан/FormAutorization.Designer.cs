@@ -39,19 +39,20 @@ namespace Ресторан
             // 
             // textBoxPasswd
             // 
-            this.textBoxPasswd.Location = new System.Drawing.Point(13, 46);
-            this.textBoxPasswd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxPasswd.Location = new System.Drawing.Point(12, 37);
+            this.textBoxPasswd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPasswd.Name = "textBoxPasswd";
-            this.textBoxPasswd.Size = new System.Drawing.Size(223, 26);
+            this.textBoxPasswd.Size = new System.Drawing.Size(199, 22);
             this.textBoxPasswd.TabIndex = 4;
+            this.textBoxPasswd.Text = "dfghjklkjhgf";
             this.textBoxPasswd.UseSystemPasswordChar = true;
             // 
             // buttonEnter
             // 
-            this.buttonEnter.Location = new System.Drawing.Point(13, 87);
-            this.buttonEnter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonEnter.Location = new System.Drawing.Point(12, 70);
+            this.buttonEnter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonEnter.Name = "buttonEnter";
-            this.buttonEnter.Size = new System.Drawing.Size(276, 35);
+            this.buttonEnter.Size = new System.Drawing.Size(245, 28);
             this.buttonEnter.TabIndex = 7;
             this.buttonEnter.Text = "Войти";
             this.buttonEnter.UseVisualStyleBackColor = true;
@@ -59,10 +60,10 @@ namespace Ресторан
             // 
             // buttonChangePass
             // 
-            this.buttonChangePass.Location = new System.Drawing.Point(13, 132);
-            this.buttonChangePass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonChangePass.Location = new System.Drawing.Point(12, 106);
+            this.buttonChangePass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonChangePass.Name = "buttonChangePass";
-            this.buttonChangePass.Size = new System.Drawing.Size(275, 35);
+            this.buttonChangePass.Size = new System.Drawing.Size(244, 28);
             this.buttonChangePass.TabIndex = 8;
             this.buttonChangePass.Text = "Изменить пароль";
             this.buttonChangePass.UseVisualStyleBackColor = true;
@@ -71,10 +72,10 @@ namespace Ресторан
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 14);
+            this.label1.Location = new System.Drawing.Point(12, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(276, 20);
+            this.label1.Size = new System.Drawing.Size(236, 17);
             this.label1.TabIndex = 9;
             this.label1.Text = "Для продолжения введите пароль";
             // 
@@ -83,10 +84,10 @@ namespace Ресторан
             this.buttonLook.BackColor = System.Drawing.Color.Transparent;
             this.buttonLook.BackgroundImage = global::Ресторан.Properties.Resources.пароль;
             this.buttonLook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonLook.Location = new System.Drawing.Point(244, 39);
-            this.buttonLook.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonLook.Location = new System.Drawing.Point(217, 31);
+            this.buttonLook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonLook.Name = "buttonLook";
-            this.buttonLook.Size = new System.Drawing.Size(44, 38);
+            this.buttonLook.Size = new System.Drawing.Size(39, 30);
             this.buttonLook.TabIndex = 6;
             this.buttonLook.UseCompatibleTextRendering = true;
             this.buttonLook.UseVisualStyleBackColor = false;
@@ -94,9 +95,9 @@ namespace Ресторан
             // 
             // FormAutorization
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 173);
+            this.ClientSize = new System.Drawing.Size(267, 138);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonChangePass);
@@ -104,6 +105,7 @@ namespace Ресторан
             this.Controls.Add(this.buttonLook);
             this.Controls.Add(this.textBoxPasswd);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAutorization";
