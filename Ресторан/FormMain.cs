@@ -38,7 +38,10 @@ namespace Ресторан
 
         private void buttonPriceList_Click(object sender, EventArgs e)
         {
-            
+            FormPriceList form_pricelist = new FormPriceList();
+            this.Hide();
+            form_pricelist.ShowDialog();
+            Show();
         }
     }
 }

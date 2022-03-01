@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Ресторан
 {
@@ -18,5 +19,15 @@ namespace Ресторан
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
         }
+        public class ClassTotal
+        {
+            public static Excel.Application excelApplication;   //Сервер Excel
+            public static Excel.Workbook excelBook; //Отдельная книга
+            public static Excel.Worksheet excelSheet;   //Один лист
+            public static Excel.Range excelCells;   //Ячейки
+        }
+
     }
+
+
 }
