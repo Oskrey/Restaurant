@@ -38,39 +38,43 @@ namespace Ресторан
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(378, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(284, 10);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(180, 122);
             this.dataGridView1.TabIndex = 1;
             // 
             // listBoxCat
             // 
             this.listBoxCat.FormattingEnabled = true;
-            this.listBoxCat.ItemHeight = 16;
-            this.listBoxCat.Location = new System.Drawing.Point(33, 36);
+            this.listBoxCat.Location = new System.Drawing.Point(25, 29);
+            this.listBoxCat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxCat.Name = "listBoxCat";
-            this.listBoxCat.Size = new System.Drawing.Size(120, 84);
+            this.listBoxCat.Size = new System.Drawing.Size(91, 69);
             this.listBoxCat.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(144, 223);
+            this.button1.Location = new System.Drawing.Point(108, 181);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(56, 19);
             this.button1.TabIndex = 3;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormPriceList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBoxCat);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormPriceList";
             this.Text = "FormPriceList";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormPriceList_FormClosed);

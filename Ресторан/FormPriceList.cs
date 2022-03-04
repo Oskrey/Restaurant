@@ -57,6 +57,28 @@ namespace Ресторан
                 MessageBox.Show("Файл с меню отсутствует");
                 this.Close();
             }
+            int countSheet = ClassTotal.excelBook.Worksheets.Count;
+            string sheetName = "";
+            foreach (Excel.Worksheet item in ClassTotal.excelBook.Worksheets)
+            {
+                sheetName += item.Name + Environment.NewLine;
+            }
+            MessageBox.Show(sheetName);
+            ClassTotal.excelSheet = ClassTotal.excelBook.Sheets[1];
+            ClassTotal.excelCells = ClassTotal.excelSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);
+            //Количество=номеру последней заполненной ячейки
+            int count = ClassTotal.excelCells.Row;
+            //Перенос в список
+            listBoxCat.Items.Clear();
+            for (int i = 1; i <= count; i++)
+            {
+                ClassTotal.excelCells = ClassTotal.excelSheet.Cells[i, 1];  //Ссылка на нужную ячейку
+                if (ClassTotal.excelCells != null)
+                {
+                    listBoxCat.Items.Add(ClassTotal.excelCells.Value2);  //Значение этой ячейки
+                }
+            }
+
 
         }
         private void FormPriceList_FormClosed(object sender, FormClosedEventArgs e)
@@ -68,5 +90,9 @@ namespace Ресторан
             GC.Collect();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
