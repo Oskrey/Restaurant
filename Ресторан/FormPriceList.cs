@@ -44,26 +44,19 @@ namespace Ресторан
                 this.Close();
             }
 //Открытие документа 
-            string path = Application.StartupPath;      //Путь к exe-файлу приложения
-            string fileName = path + @"\PriceList.xlsx"; //Абсолютный путь к файлу Excel
+            string fileName = Application.StartupPath + @"\PriceList.xlsx"; //Абсолютный путь к файлу Excel
             if (File.Exists(fileName))          //Проверить наличие документа
             {
                 //Открыть книгу Excel
                 ClassTotal.excelBook = ClassTotal.excelApplication.Workbooks.Open(fileName);
-                MessageBox.Show("Файл с меню Есть");
             }
             else
             {
                 MessageBox.Show("Файл с меню отсутствует");
                 this.Close();
             }
+            //Добавление категорий с первого листа
             int countSheet = ClassTotal.excelBook.Worksheets.Count;
-            string sheetName = "";
-            foreach (Excel.Worksheet item in ClassTotal.excelBook.Worksheets)
-            {
-                sheetName += item.Name + Environment.NewLine;
-            }
-            MessageBox.Show(sheetName);
             ClassTotal.excelSheet = ClassTotal.excelBook.Sheets[1];
             ClassTotal.excelCells = ClassTotal.excelSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);
             //Количество=номеру последней заполненной ячейки
@@ -78,10 +71,62 @@ namespace Ресторан
                     listBoxCat.Items.Add(ClassTotal.excelCells.Value2);  //Значение этой ячейки
                 }
             }
-
-
+            listBoxCat.SelectedIndex = 1;
+            //Заполнение меню
+            string category = listBoxCat.SelectedItem.ToString();    //Выбранная категория
+                                                                            //Связаться с нужным листом-категорией блюд
+            ClassTotal.excelSheet =(Excel.Worksheet)ClassTotal.excelBook.Worksheets.get_Item(category);
+            //Ссылка на заполненные ячеки в листе
+            ClassTotal.excelCells =
+                           ClassTotal.excelSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);
+            //Номер последней заполненной строки – это число строк (названий блюд)
+            int countFood = ClassTotal.excelCells.Row;
+            //Настройки ListView для отображения картинок блюд
+            listViewPriceList.Items.Clear();        //Сначала список надо очистить
+            listViewPriceList.CheckBoxes = true;    //Разрешить флажки возле картинок
+            listViewPriceList.LabelWrap = false;    //Запретить перенос на новую строку
+            listViewPriceList.MultiSelect = true;   //Разрешить выделять несколько
+            listViewPriceList.FullRowSelect = true;
+            listViewPriceList.RightToLeftLayout = false;
+            listViewPriceList.Scrollable = true;    //Обеспечить наличие полос прокрутки
+            listViewPriceList.View = View.LargeIcon;    //Вид компонента – большие картинки
+                                                        //Создание списка картинок
+            ImageList il = new ImageList();     //Динамический элемент – массив изображений
+            il.ImageSize = new Size(100, 100);  //Размеры всех изображений одинаковы
+            listViewPriceList.LargeImageList = il;  //Связать два списка между собой
+            il.Images.Clear();              //Очистить список картинок
+            string nameFood;                //Название блюда
+            double costFood;                //Цена блюда
+            string fileFoodPic;                //Файл картинки
+            Bitmap bitmap;
+            for (int i = 1; i <= countFood; i++)        //По всем блюдам
+            {
+                ClassTotal.excelCells = ClassTotal.excelSheet.Cells[i, 1];      //Ссылка на ячейку
+                nameFood = ClassTotal.excelCells.Value2;        //Название блюда
+                ClassTotal.excelCells = ClassTotal.excelSheet.Cells[i, 2];      //Ссылка на ячейку
+                costFood = ClassTotal.excelCells.Value2;        //Цена блюда
+                ListViewItem lvi = new ListViewItem();      //Элемент списка
+                lvi.Text = nameFood + " - " + costFood.ToString();  //Текст элемента
+                                                                    //Абсолютный путь к файлу с изображением блюда
+                fileFoodPic = Application.StartupPath + @"\" + category + @"\" + nameFood + ".jpg";
+                if (File.Exists(fileFoodPic))				//Проверка существования картинки
+                {
+                    bitmap = new Bitmap(fileFoodPic);		//Есть – загрузить
+                }
+                else
+                {
+                    bitmap = Properties.Resources.Кнопка;		//Нет – из ресурсов
+                }
+                il.Images.Add(bitmap);      //Добавить картинку в массив картинок
+                lvi.ImageIndex = (i - 1);       //Для элемента списка задать индекс картинки
+                listBoxCat.Items.Add(lvi);        // добавляем элемент в ListView
+            }
         }
-        private void FormPriceList_FormClosed(object sender, FormClosedEventArgs e)
+
+
+
+    
+         private void FormPriceList_FormClosed(object sender, FormClosedEventArgs e)
         {
             ClassTotal.excelApplication.Quit();      //Выйти из Excel
                                              //Уничтожить все COM-объекты

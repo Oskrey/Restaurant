@@ -197,5 +197,14 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Десерты.jfif" />
+    <Content Include="Properties\Десерты.jpg" />
+    <Content Include="Properties\Мясные деликатесы.jpg" />
+    <Content Include="Properties\напитки.png" />
+    <Content Include="Properties\Первые блюда.jpg" />
+    <Content Include="Properties\Салаты.jpg" />
+    <Content Include="Properties\Фрукты.jfif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
