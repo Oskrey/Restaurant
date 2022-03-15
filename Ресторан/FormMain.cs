@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace Ресторан
 {
@@ -38,10 +40,31 @@ namespace Ресторан
 
         private void buttonPriceList_Click(object sender, EventArgs e)
         {
-            FormPriceList form_pricelist = new FormPriceList();
-            this.Hide();
-            form_pricelist.ShowDialog();
-            Show();
+            ClassTotal.excelApplication.Visible = true;
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                ClassTotal.excelApplication = new Excel.Application();
+                // ClassTotal.excelApp.Visible = false;
+                Start.startExel();
+            }
+
+            catch
+            {
+                MessageBox.Show("Нет MS Excel");
+            }
+        }
+
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ClassTotal.excelApplication.Quit();      //Выйти из Excel
+                                             //Уничтожить все COM-объекты
+            System.Runtime.InteropServices.Marshal.FinalReleaseComObject(ClassTotal.excelApplication);
+            //Заставляет сборщик мусора провести сборку мусора
+            GC.Collect();
         }
     }
 }

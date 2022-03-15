@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 
 namespace Ресторан
@@ -38,6 +39,34 @@ namespace Ресторан
             FormMain form_main = new FormMain();
             this.Close();
             form_main.Show();
+        }
+
+        private void FormOrder_Load(object sender, EventArgs e)
+        {
+
+            ClassTotal.excelSheet = (Excel.Worksheet)ClassTotal.excelBook.Worksheets.get_Item("Категории");
+            ClassTotal.excelSheet = (Excel.Worksheet)ClassTotal.excelBook.Sheets.get_Item("Категории");
+            ClassTotal.excelSheet = (Excel.Worksheet)ClassTotal.excelBook.Worksheets["Категории"];
+            ClassTotal.excelSheet = (Excel.Worksheet)ClassTotal.excelBook.Sheets[1];
+
+
+
+
+            //Получит все заполненные ячейки
+            ClassTotal.excelCells = ClassTotal.excelSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);
+            //Количество=номеру последней заполненной ячейки
+            int count = ClassTotal.excelCells.Row;
+            //Перенос в список
+
+            this.listBoxCat.Items.Clear();
+            for (int i = 1; i <= count; i++)
+            {
+                ClassTotal.excelCells = ClassTotal.excelSheet.Cells[i, 1];  //Ссылка на нужную ячейку
+                if (ClassTotal.excelCells != null)
+                {
+                    this.listBoxCat.Items.Add(ClassTotal.excelCells.Value2);  //Значение этой ячейки
+                }
+            }
         }
     }
 }

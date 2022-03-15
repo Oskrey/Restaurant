@@ -33,6 +33,7 @@ namespace Ресторан
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.buttonIssueOrder = new System.Windows.Forms.Button();
             this.buttonMain = new System.Windows.Forms.Button();
+            this.listBoxCat = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
@@ -47,17 +48,19 @@ namespace Ресторан
             this.panel1.Controls.Add(this.buttonIssueOrder);
             this.panel1.Controls.Add(this.buttonMain);
             this.panel1.Location = new System.Drawing.Point(-1, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(503, 105);
+            this.panel1.Size = new System.Drawing.Size(335, 68);
             this.panel1.TabIndex = 0;
             // 
             // pictureBoxIcon
             // 
             this.pictureBoxIcon.BackgroundImage = global::Ресторан.Properties.Resources.эмблема1;
             this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(34, -6);
+            this.pictureBoxIcon.Location = new System.Drawing.Point(23, -4);
+            this.pictureBoxIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(109, 104);
+            this.pictureBoxIcon.Size = new System.Drawing.Size(73, 68);
             this.pictureBoxIcon.TabIndex = 2;
             this.pictureBoxIcon.TabStop = false;
             this.pictureBoxIcon.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -65,9 +68,10 @@ namespace Ресторан
             // buttonIssueOrder
             // 
             this.buttonIssueOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonIssueOrder.Location = new System.Drawing.Point(183, 11);
+            this.buttonIssueOrder.Location = new System.Drawing.Point(122, 7);
+            this.buttonIssueOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonIssueOrder.Name = "buttonIssueOrder";
-            this.buttonIssueOrder.Size = new System.Drawing.Size(305, 40);
+            this.buttonIssueOrder.Size = new System.Drawing.Size(203, 26);
             this.buttonIssueOrder.TabIndex = 1;
             this.buttonIssueOrder.Text = "Оформить заказ";
             this.buttonIssueOrder.UseVisualStyleBackColor = true;
@@ -76,26 +80,39 @@ namespace Ресторан
             // buttonMain
             // 
             this.buttonMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonMain.Location = new System.Drawing.Point(183, 58);
+            this.buttonMain.Location = new System.Drawing.Point(122, 38);
+            this.buttonMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonMain.Name = "buttonMain";
-            this.buttonMain.Size = new System.Drawing.Size(305, 40);
+            this.buttonMain.Size = new System.Drawing.Size(203, 26);
             this.buttonMain.TabIndex = 0;
             this.buttonMain.Text = "Вернуться на главную";
             this.buttonMain.UseVisualStyleBackColor = true;
             this.buttonMain.Click += new System.EventHandler(this.buttonMain_Click);
             // 
+            // listBoxCat
+            // 
+            this.listBoxCat.BackColor = System.Drawing.Color.SandyBrown;
+            this.listBoxCat.FormattingEnabled = true;
+            this.listBoxCat.Location = new System.Drawing.Point(13, 103);
+            this.listBoxCat.Name = "listBoxCat";
+            this.listBoxCat.Size = new System.Drawing.Size(71, 134);
+            this.listBoxCat.TabIndex = 1;
+            // 
             // FormOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Ресторан.Properties.Resources.заказ;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(499, 676);
+            this.ClientSize = new System.Drawing.Size(333, 439);
             this.ControlBox = false;
+            this.Controls.Add(this.listBoxCat);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сделать заказ";
+            this.Load += new System.EventHandler(this.FormOrder_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
@@ -108,5 +125,6 @@ namespace Ресторан
         private System.Windows.Forms.PictureBox pictureBoxIcon;
         private System.Windows.Forms.Button buttonIssueOrder;
         private System.Windows.Forms.Button buttonMain;
+        private System.Windows.Forms.ListBox listBoxCat;
     }
 }
