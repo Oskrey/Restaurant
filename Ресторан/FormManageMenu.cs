@@ -19,9 +19,12 @@ namespace Ресторан
 
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            FormMain form_main = new FormMain();
+            
             this.Close();
-            form_main.Show();
+            Form open = Application.OpenForms["FormMain"];
+
+
+            open.Show();
         }
 
         private void pictureBoxMenu_Click(object sender, EventArgs e)

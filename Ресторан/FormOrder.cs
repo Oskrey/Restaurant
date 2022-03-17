@@ -15,8 +15,11 @@ namespace Ресторан
     public partial class FormOrder : Form
     {
 
-        public FormMain form_main = new FormMain();
+        double summaWallet = Money.Value;//Сумма в кошельке
+        double summaOrder;		//Сумма заказа
+        double summaBalance;	//Сумма остатка
 
+        List<ClassDish> listDishes;	//Список информации о выбранных блюдах
         public FormOrder()
         {
             InitializeComponent();
@@ -25,51 +28,53 @@ namespace Ресторан
         private void buttonIssueOrder_Click(object sender, EventArgs e)
         {
             FormCheck form_check = new FormCheck();
-            this.Hide();
-            form_check.Show();
+            Hide();
+            form_check.ShowDialog();
         }
 
         private void buttonMain_Click(object sender, EventArgs e)
         {
-            this.Close();
-            form_main.Show();
+            Close();
+            ClassTotal.excelApplication.Quit();      //Выйти из Excel
+                                                     //Уничтожить все COM-объекты
+            System.Runtime.InteropServices.Marshal.FinalReleaseComObject(ClassTotal.excelApplication);
+            //Заставляет сборщик мусора провести сборку мусора
+            GC.Collect();
+            Form open = Application.OpenForms["FormMain"];
+
+
+            open.Show();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            FormMain form_main = new FormMain();
-            this.Close();
-            form_main.Show();
-        }
+
+
 
         private void FormOrder_Load(object sender, EventArgs e)
         {
-
-            Start.startExel();
 
             ClassTotal.excelSheet = (Excel.Worksheet)ClassTotal.excelBook.Worksheets.get_Item("Категории");
             ClassTotal.excelSheet = (Excel.Worksheet)ClassTotal.excelBook.Sheets.get_Item("Категории");
             ClassTotal.excelSheet = (Excel.Worksheet)ClassTotal.excelBook.Worksheets["Категории"];
             ClassTotal.excelSheet = (Excel.Worksheet)ClassTotal.excelBook.Sheets[1];
 
-
-
-
             //Получит все заполненные ячейки
             ClassTotal.excelCells = ClassTotal.excelSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);
             //Количество=номеру последней заполненной ячейки
             int count = ClassTotal.excelCells.Row;
             //Перенос в список
+            listDishes = new List<ClassDish>();
 
-            this.listBoxCat.Items.Clear();
+            listBoxCat.Items.Clear();
             for (int i = 1; i <= count; i++)
             {
                 ClassTotal.excelCells = ClassTotal.excelSheet.Cells[i, 1];  //Ссылка на нужную ячейку
                 if (ClassTotal.excelCells != null)
                 {
-                    this.listBoxCat.Items.Add(ClassTotal.excelCells.Value2);  //Значение этой ячейки
+                    listBoxCat.Items.Add(ClassTotal.excelCells.Value2);  //Значение этой ячейки
                 }
             }
+
+            ShowOrder();
         }
 
         private void listBoxCat_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,22 +88,22 @@ namespace Ресторан
             //Номер последней заполненной строки – это число строк (названий блюд)
             int countFood = ClassTotal.excelCells.Row;
             //Настройки ListView для отображения картинок блюд
-            this.listView1.Items.Clear();        //Сначала список надо очистить
-            this.listView1.CheckBoxes = true;    //Разрешить флажки возле картинок
-            this.listView1.LabelWrap = false;    //Запретить перенос на новую строку
-            this.listView1.MultiSelect = true;   //Разрешить выделять несколько
-            this.listView1.FullRowSelect = true;
-            this.listView1.RightToLeftLayout = false;
-            this.listView1.Scrollable = true;    //Обеспечить наличие полос прокрутки
-            this.listView1.View = View.LargeIcon;    //Вид компонента – большие картинки
+            listViewMenu.Items.Clear();        //Сначала список надо очистить
+            listViewMenu.CheckBoxes = true;    //Разрешить флажки возле картинок
+            listViewMenu.LabelWrap = false;    //Запретить перенос на новую строку
+            listViewMenu.MultiSelect = true;   //Разрешить выделять несколько
+            listViewMenu.FullRowSelect = true;
+            listViewMenu.RightToLeftLayout = false;
+            listViewMenu.Scrollable = true;    //Обеспечить наличие полос прокрутки
+            listViewMenu.View = View.LargeIcon;    //Вид компонента – большие картинки
                                                      //Создание списка картинок
-            ImageList il = new ImageList();     //Динамический элемент – массив изображений
-            il.ImageSize = new Size(250, 250);  //Размеры всех изображений одинаковы
-            this.listView1.LargeImageList = il;  //Связать два списка между собой
-            il.Images.Clear();              //Очистить список картинок
+            ImageList imageList = new ImageList();     //Динамический элемент – массив изображений
+            imageList.ImageSize = new Size(250, 250);  //Размеры всех изображений одинаковы
+            listViewMenu.LargeImageList = imageList;  //Связать два списка между собой
+            imageList.Images.Clear();              //Очистить список картинок
             string nameFood;                //Название блюда
-            string cat1;
-            string cat2;
+            double weighFood;
+            double caloriesFood;
             double costFood;                //Цена блюда
             string fileFood;                //Файл картинки
             Bitmap bitmap;
@@ -112,15 +117,16 @@ namespace Ресторан
                 costFood = ClassTotal.excelCells.Value2;        //Цена блюда
 
                 ClassTotal.excelCells = ClassTotal.excelSheet.Cells[i, 3];
-                cat1 = ClassTotal.excelCells.Value2;
+                weighFood = ClassTotal.excelCells.Value2;
 
                 ClassTotal.excelCells = ClassTotal.excelSheet.Cells[i, 4];
-                cat2 = ClassTotal.excelCells.Value2;
+                caloriesFood = ClassTotal.excelCells.Value2;
 
 
 
-                ListViewItem lvi = new ListViewItem();      //Элемент списка
-                lvi.Text = nameFood + " | " + cat1 + " | \n" + cat2 + " - " + costFood.ToString() + "₽";  //Текст элемента
+                ListViewItem listViewItem = new ListViewItem();      //Элемент списка
+                listViewItem.Text = nameFood + " | " + weighFood.ToString() + " грамм, " 
+                    + caloriesFood.ToString() + " каллорий, цена (₽) — " + costFood.ToString();// + "₽";  //Текст элемента
                                                                                                           //Абсолютный путь к файлу с изображением блюда
                 fileFood = path + @"\" + category + @"\" + nameFood + ".jpg";
                 if (File.Exists(fileFood))				//Проверка существования картинки
@@ -131,10 +137,88 @@ namespace Ресторан
                 {
                     bitmap = Properties.Resources.NotImage;		//Нет – из ресурсов
                 }
-                il.Images.Add(bitmap);      //Добавить картинку в массив картинок
-                lvi.ImageIndex = (i - 2);       //Для элемента списка задать индекс картинки
-                listView1.Items.Add(lvi);        // добавляем элемент в ListView
+                imageList.Images.Add(bitmap);      //Добавить картинку в массив картинок
+                listViewItem.ImageIndex = (i - 2);       //Для элемента списка задать индекс картинки
+                listViewMenu.Items.Add(listViewItem);        // добавляем элемент в ListView
             }
+        }
+        private void ShowOrder()
+        {
+            //Отображать список с учетом списка из информации о блюдах
+            listBoxDishes.Items.Clear();
+            summaOrder = 0;
+            //Просмотр списка информации о блюдах
+            foreach (var itemList in listDishes)
+            {
+                //Вывести название и цену
+                listBoxDishes.Items.Add(itemList.Title + " — " + itemList.Count + " шт." + itemList.Price*itemList.Count + " всего: ₽");
+                //Учет в стоимости заказа выбранного блюда и его количества
+                summaOrder += (itemList.Price * itemList.Count);
+            }
+            summaBalance = summaWallet - summaOrder;	//Расчет остатка
+            //Отображение
+            labelCalc.Text = "Было в кошельке = " + summaWallet + Environment.NewLine +
+                "Сумма заказа = " + summaOrder + Environment.NewLine +
+                "Осталось средств = " + summaBalance;
+        }
+        private void FormOrder_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
+        private void buttonGoToOrder_Click(object sender, EventArgs e)
+        {
+            string titleDish = "";
+            ClassDish dish;
+            string temp;
+            bool search = false;
+            double summaSelect = 0;
+            //Проверка наличия выбранных блюд
+            int countSelect = this.listViewMenu.SelectedItems.Count;
+            if (countSelect == 0)
+            {
+                MessageBox.Show("Вы не выбрали ни одно блюдо");
+                return;
+            }
+            //Расчет стоимости выбранных блюд
+            foreach (ListViewItem item in this.listViewMenu.SelectedItems)
+            {
+                summaSelect += double.Parse(item.Text.Split('—')[1]);
+            }
+            //Проверка достаточного количества денег на выбранные блюда
+            if (summaSelect > summaBalance)
+            {
+                MessageBox.Show("У Вас не хватает денег на этот заказ");
+                return;
+            }
+
+            //Перенос выбранных блюд в заказ
+            foreach (ListViewItem item in this.listViewMenu.SelectedItems)
+            {
+                temp = item.Text;
+                search = false;
+                titleDish = temp.Split('|')[0]; 		//Название
+                //Поиск выбранного блюда среди заказанных
+                foreach (var itemList in listDishes)	//Просмотр всех заказанных блюд
+                {
+                    if (titleDish == itemList.Title)		//Такое уже выбирали
+                    {
+                        itemList.Count++;			//Увеличиваем количество этого блюда
+                        search = true;
+                        break;
+                    }
+                }
+                if (!search)		//Если это блюдо выбрали первый раз, то добавляем его список
+                {
+                    dish = new ClassDish();		//Создать объект с информацией о блюде
+                    dish.Title = titleDish;
+                    dish.Price = double.Parse(temp.Split('—')[1]);
+                    dish.Count = 1;				//Первый раз
+                    listDishes.Add(dish);			//Добавить новый объект в список
+                }
+            }
+            ShowOrder();
+
         }
     }
 }
+

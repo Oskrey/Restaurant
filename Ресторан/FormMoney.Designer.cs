@@ -42,9 +42,10 @@ namespace Ресторан
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(24, 52);
+            this.label1.Location = new System.Drawing.Point(16, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 25);
+            this.label1.Size = new System.Drawing.Size(125, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Текущий баланс: ";
             // 
@@ -54,11 +55,12 @@ namespace Ресторан
             this.labelMoney.BackColor = System.Drawing.Color.Transparent;
             this.labelMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMoney.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelMoney.Location = new System.Drawing.Point(24, 112);
+            this.labelMoney.Location = new System.Drawing.Point(16, 73);
+            this.labelMoney.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMoney.Name = "labelMoney";
-            this.labelMoney.Size = new System.Drawing.Size(85, 29);
+            this.labelMoney.Size = new System.Drawing.Size(99, 20);
             this.labelMoney.TabIndex = 1;
-            this.labelMoney.Text = "label2";
+            this.labelMoney.Text = "labelMoney";
             // 
             // label3
             // 
@@ -66,9 +68,10 @@ namespace Ресторан
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(115, 116);
+            this.label3.Location = new System.Drawing.Point(77, 75);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 25);
+            this.label3.Size = new System.Drawing.Size(35, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "руб.";
             // 
@@ -78,9 +81,10 @@ namespace Ресторан
             this.buttonOK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonOK.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOK.Location = new System.Drawing.Point(91, 184);
+            this.buttonOK.Location = new System.Drawing.Point(61, 120);
+            this.buttonOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(132, 40);
+            this.buttonOK.Size = new System.Drawing.Size(88, 26);
             this.buttonOK.TabIndex = 3;
             this.buttonOK.Text = "ОК";
             this.buttonOK.UseVisualStyleBackColor = true;
@@ -88,17 +92,18 @@ namespace Ресторан
             // 
             // FormMoney
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Ресторан.Properties.Resources.кошелек;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(471, 249);
+            this.ClientSize = new System.Drawing.Size(314, 162);
             this.ControlBox = false;
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelMoney);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormMoney";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Виртуальный кошелек";

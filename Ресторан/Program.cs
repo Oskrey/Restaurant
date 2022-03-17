@@ -29,6 +29,26 @@ namespace Ресторан
         public static Excel.Worksheet excelSheet;   //Один лист
         public static Excel.Range excelCells;   //Ячейки
     }
+    public class ClassDish      //Содержит информацию о блюде заказа
+    {
+        public string Category      //Категория
+        { get; set; }
+        public string Title     //Название 
+        { get; set; }
+        public double Price     //Цена
+        { get; set; }
+        public int Count        //Количество в заказе
+        { get; set; }
+        public ClassDish()
+        { }
+    }
+    static class Money
+    {
+        public static double Value { get; set; }
+    }
+
+
+
     public class Start
     {
         public static void startExel()

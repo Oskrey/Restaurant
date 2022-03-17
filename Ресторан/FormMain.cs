@@ -23,7 +23,7 @@ namespace Ресторан
         {
             
             FormMoney form_money = new FormMoney();
-            this.Hide();
+            Hide();
             form_money.ShowDialog();
         }
 
@@ -34,6 +34,7 @@ namespace Ресторан
 
         private void buttonManageMenu_Click(object sender, EventArgs e)
         {
+
             FormAutorization form_autorization = new FormAutorization();
             this.Hide();
             form_autorization.ShowDialog();
@@ -46,6 +47,7 @@ namespace Ресторан
                 ClassTotal.excelApplication = new Excel.Application();
                 // ClassTotal.excelApp.Visible = false;
                 Start.startExel();
+                excell = true;
             }
 
             catch
@@ -54,6 +56,7 @@ namespace Ресторан
             }
             ClassTotal.excelApplication.Visible = true;
         }
+        bool excell = false;
 
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -62,11 +65,14 @@ namespace Ресторан
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ClassTotal.excelApplication.Quit();      //Выйти из Excel
-                                             //Уничтожить все COM-объекты
-            System.Runtime.InteropServices.Marshal.FinalReleaseComObject(ClassTotal.excelApplication);
-            //Заставляет сборщик мусора провести сборку мусора
-            GC.Collect();
+            if (excell)
+            {
+                ClassTotal.excelApplication.Quit();      //Выйти из Excel
+                                                         //Уничтожить все COM-объекты
+                System.Runtime.InteropServices.Marshal.FinalReleaseComObject(ClassTotal.excelApplication);
+                //Заставляет сборщик мусора провести сборку мусора
+                GC.Collect();
+            }
         }
     }
 }

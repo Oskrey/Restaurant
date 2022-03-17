@@ -47,27 +47,30 @@ namespace Ресторан
             this.panel1.Controls.Add(this.buttonMakeCheck);
             this.panel1.Controls.Add(this.buttonMain);
             this.panel1.Location = new System.Drawing.Point(-1, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(771, 100);
+            this.panel1.Size = new System.Drawing.Size(514, 65);
             this.panel1.TabIndex = 0;
             // 
             // pictureBoxIcon
             // 
             this.pictureBoxIcon.BackgroundImage = global::Ресторан.Properties.Resources.эмблема1;
             this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(52, -8);
+            this.pictureBoxIcon.Location = new System.Drawing.Point(35, -5);
+            this.pictureBoxIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(129, 105);
+            this.pictureBoxIcon.Size = new System.Drawing.Size(86, 68);
             this.pictureBoxIcon.TabIndex = 2;
             this.pictureBoxIcon.TabStop = false;
-            this.pictureBoxIcon.Click += new System.EventHandler(this.pictureBoxIcon_Click);
+            this.pictureBoxIcon.Click += new System.EventHandler(this.buttonMain_Click);
             // 
             // buttonMakeCheck
             // 
             this.buttonMakeCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonMakeCheck.Location = new System.Drawing.Point(253, 23);
+            this.buttonMakeCheck.Location = new System.Drawing.Point(169, 15);
+            this.buttonMakeCheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonMakeCheck.Name = "buttonMakeCheck";
-            this.buttonMakeCheck.Size = new System.Drawing.Size(239, 58);
+            this.buttonMakeCheck.Size = new System.Drawing.Size(159, 38);
             this.buttonMakeCheck.TabIndex = 1;
             this.buttonMakeCheck.Text = "Создать чек";
             this.buttonMakeCheck.UseVisualStyleBackColor = true;
@@ -76,9 +79,10 @@ namespace Ресторан
             // buttonMain
             // 
             this.buttonMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonMain.Location = new System.Drawing.Point(510, 23);
+            this.buttonMain.Location = new System.Drawing.Point(340, 15);
+            this.buttonMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonMain.Name = "buttonMain";
-            this.buttonMain.Size = new System.Drawing.Size(239, 58);
+            this.buttonMain.Size = new System.Drawing.Size(159, 38);
             this.buttonMain.TabIndex = 0;
             this.buttonMain.Text = "Вернуться в меню";
             this.buttonMain.UseVisualStyleBackColor = true;
@@ -86,17 +90,19 @@ namespace Ресторан
             // 
             // FormCheck
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Ресторан.Properties.Resources.чек;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(769, 666);
+            this.ClientSize = new System.Drawing.Size(513, 433);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormCheck";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Оформление заказа";
+            this.Load += new System.EventHandler(this.FormCheck_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);

@@ -97,5 +97,13 @@ namespace Ресторан
                 }
             }
         }
+
+        private void FormAutorization_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form open = Application.OpenForms["FormMain"];
+
+
+            open.Show();
+        }
     }
 }
