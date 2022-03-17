@@ -21,6 +21,7 @@ namespace Ресторан
 
         private void buttonMakeOrder_Click(object sender, EventArgs e)
         {
+            
             FormMoney form_money = new FormMoney();
             this.Hide();
             form_money.ShowDialog();
@@ -40,11 +41,6 @@ namespace Ресторан
 
         private void buttonPriceList_Click(object sender, EventArgs e)
         {
-            ClassTotal.excelApplication.Visible = true;
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
             try
             {
                 ClassTotal.excelApplication = new Excel.Application();
@@ -56,6 +52,12 @@ namespace Ресторан
             {
                 MessageBox.Show("Нет MS Excel");
             }
+            ClassTotal.excelApplication.Visible = true;
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)

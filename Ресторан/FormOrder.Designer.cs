@@ -29,11 +29,13 @@ namespace Ресторан
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOrder));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.buttonIssueOrder = new System.Windows.Forms.Button();
             this.buttonMain = new System.Windows.Forms.Button();
             this.listBoxCat = new System.Windows.Forms.ListBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +52,7 @@ namespace Ресторан
             this.panel1.Location = new System.Drawing.Point(-1, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(335, 68);
+            this.panel1.Size = new System.Drawing.Size(444, 68);
             this.panel1.TabIndex = 0;
             // 
             // pictureBoxIcon
@@ -93,10 +95,21 @@ namespace Ресторан
             // 
             this.listBoxCat.BackColor = System.Drawing.Color.SandyBrown;
             this.listBoxCat.FormattingEnabled = true;
-            this.listBoxCat.Location = new System.Drawing.Point(13, 103);
+            this.listBoxCat.Location = new System.Drawing.Point(12, 75);
             this.listBoxCat.Name = "listBoxCat";
-            this.listBoxCat.Size = new System.Drawing.Size(71, 134);
+            this.listBoxCat.Size = new System.Drawing.Size(71, 225);
             this.listBoxCat.TabIndex = 1;
+            this.listBoxCat.SelectedIndexChanged += new System.EventHandler(this.listBoxCat_SelectedIndexChanged);
+            // 
+            // listView1
+            // 
+            this.listView1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("listView1.BackgroundImage")));
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(102, 75);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(285, 397);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // FormOrder
             // 
@@ -104,8 +117,9 @@ namespace Ресторан
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Ресторан.Properties.Resources.заказ;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(333, 439);
+            this.ClientSize = new System.Drawing.Size(442, 527);
             this.ControlBox = false;
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.listBoxCat);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -126,5 +140,6 @@ namespace Ресторан
         private System.Windows.Forms.Button buttonIssueOrder;
         private System.Windows.Forms.Button buttonMain;
         private System.Windows.Forms.ListBox listBoxCat;
+        private System.Windows.Forms.ListView listView1;
     }
 }

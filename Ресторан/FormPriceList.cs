@@ -32,29 +32,7 @@ namespace Ресторан
 
         private void FormPriceList_Load(object sender, EventArgs e)
         {
-//Запукс Excel
-            try
-            {
-                ClassTotal.excelApplication = new Excel.Application();  //Создать объект Excel
-               //ClassTotal.excelApplication.Visible = false;         //Не отображать приложение Excel
-            }
-            catch
-            {
-                MessageBox.Show("Скачай MS Excel");
-                this.Close();
-            }
-//Открытие документа 
-            string fileName = Application.StartupPath + @"\PriceList.xlsx"; //Абсолютный путь к файлу Excel
-            if (File.Exists(fileName))          //Проверить наличие документа
-            {
-                //Открыть книгу Excel
-                ClassTotal.excelBook = ClassTotal.excelApplication.Workbooks.Open(fileName);
-            }
-            else
-            {
-                MessageBox.Show("Файл с меню отсутствует");
-                this.Close();
-            }
+
             //Добавление категорий с первого листа
             int countSheet = ClassTotal.excelBook.Worksheets.Count;
             ClassTotal.excelSheet = ClassTotal.excelBook.Sheets[1];
