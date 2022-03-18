@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Ресторан
 {
@@ -51,6 +52,31 @@ namespace Ресторан
 
         private void FormOrder_Load(object sender, EventArgs e)
         {
+            chart1.Series.Clear();
+            // Форматировать диаграмму
+            chart1.BackColor = Color.Gray;
+            chart1.BackSecondaryColor = Color.Transparent;
+            chart1.BackGradientStyle = GradientStyle.DiagonalRight;
+
+            chart1.BorderlineDashStyle = ChartDashStyle.Solid;
+            chart1.BorderlineColor = Color.Gray;
+            chart1.BorderSkin.SkinStyle = BorderSkinStyle.Emboss;
+
+            // Форматировать область диаграммы
+            chart1.ChartAreas[0].BackColor = Color.Wheat;
+            chart1.Legends.Clear();
+
+            chart1.Series.Add(new Series("ColumnSeries")
+            {
+                ChartType = SeriesChartType.Pie
+            });
+
+            // Salary series data
+            double[] yValues = { summaWallet, 0 };
+            string[] xValues = { "Осталось", "Потрачено" };
+            chart1.Series["ColumnSeries"].Points.DataBindXY(xValues, yValues);
+
+            chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
 
             ClassTotal.excelSheet = (Excel.Worksheet)ClassTotal.excelBook.Worksheets.get_Item("Категории");
             ClassTotal.excelSheet = (Excel.Worksheet)ClassTotal.excelBook.Sheets.get_Item("Категории");
@@ -89,8 +115,7 @@ namespace Ресторан
             int countFood = ClassTotal.excelCells.Row;
             //Настройки ListView для отображения картинок блюд
             listViewMenu.Items.Clear();        //Сначала список надо очистить
-            listViewMenu.CheckBoxes = true;    //Разрешить флажки возле картинок
-            listViewMenu.LabelWrap = false;    //Запретить перенос на новую строку
+            listViewMenu.LabelWrap = true;    //Запретить перенос на новую строку
             listViewMenu.MultiSelect = true;   //Разрешить выделять несколько
             listViewMenu.FullRowSelect = true;
             listViewMenu.RightToLeftLayout = false;
@@ -151,7 +176,7 @@ namespace Ресторан
             foreach (var itemList in listDishes)
             {
                 //Вывести название и цену
-                listBoxDishes.Items.Add(itemList.Title + " — " + itemList.Count + " шт." + itemList.Price*itemList.Count + " всего: ₽");
+                listBoxDishes.Items.Add(itemList.Title + " — " + itemList.Count + " шт."  + " всего: " + itemList.Price*itemList.Count+ " ₽");
                 //Учет в стоимости заказа выбранного блюда и его количества
                 summaOrder += (itemList.Price * itemList.Count);
             }
@@ -160,6 +185,10 @@ namespace Ресторан
             labelCalc.Text = "Было в кошельке = " + summaWallet + Environment.NewLine +
                 "Сумма заказа = " + summaOrder + Environment.NewLine +
                 "Осталось средств = " + summaBalance;
+
+            double[] yValues = { summaBalance, summaOrder };
+            string[] xValues = { "Осталось", "Потрачено" };
+            chart1.Series["ColumnSeries"].Points.DataBindXY(xValues, yValues);
         }
         private void FormOrder_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -217,6 +246,16 @@ namespace Ресторан
                 }
             }
             ShowOrder();
+
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void listBoxDishes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxDishes.ClearSelected();
 
         }
     }

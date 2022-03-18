@@ -29,6 +29,9 @@ namespace Ресторан
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOrder));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
@@ -38,8 +41,11 @@ namespace Ресторан
             this.listBoxCat = new System.Windows.Forms.ListBox();
             this.listViewMenu = new System.Windows.Forms.ListView();
             this.listBoxDishes = new System.Windows.Forms.ListBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -118,17 +124,45 @@ namespace Ресторан
             this.listViewMenu.HideSelection = false;
             this.listViewMenu.Location = new System.Drawing.Point(102, 75);
             this.listViewMenu.Name = "listViewMenu";
-            this.listViewMenu.Size = new System.Drawing.Size(482, 540);
+            this.listViewMenu.Size = new System.Drawing.Size(322, 540);
             this.listViewMenu.TabIndex = 2;
             this.listViewMenu.UseCompatibleStateImageBehavior = false;
             // 
             // listBoxDishes
             // 
             this.listBoxDishes.FormattingEnabled = true;
-            this.listBoxDishes.Location = new System.Drawing.Point(590, 75);
+            this.listBoxDishes.Location = new System.Drawing.Point(441, 78);
             this.listBoxDishes.Name = "listBoxDishes";
-            this.listBoxDishes.Size = new System.Drawing.Size(331, 537);
+            this.listBoxDishes.Size = new System.Drawing.Size(396, 303);
             this.listBoxDishes.TabIndex = 5;
+            this.listBoxDishes.SelectedIndexChanged += new System.EventHandler(this.listBoxDishes_SelectedIndexChanged);
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(441, 387);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(218, 225);
+            this.chart1.TabIndex = 5;
+            this.chart1.Text = "chart1";
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(665, 387);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(172, 60);
+            this.buttonDelete.TabIndex = 6;
+            this.buttonDelete.Text = "Удалить блюдо из заказа";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // FormOrder
             // 
@@ -138,6 +172,8 @@ namespace Ресторан
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(963, 627);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.listBoxDishes);
             this.Controls.Add(this.listViewMenu);
             this.Controls.Add(this.listBoxCat);
@@ -152,6 +188,7 @@ namespace Ресторан
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -166,5 +203,7 @@ namespace Ресторан
         private System.Windows.Forms.ListView listViewMenu;
         private System.Windows.Forms.Label labelCalc;
         private System.Windows.Forms.ListBox listBoxDishes;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
